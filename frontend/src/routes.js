@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Verificador from './views/Verificador'
+import Vacinacao from './views/Vacinacao'
 import Router from 'vue-router'
 
 Vue.use(Router)
@@ -11,6 +12,11 @@ const router = new Router ({
       path: '/',
       name: 'verificador',
       component: Verificador
+    },
+    {
+      path: '/vacinacao',
+      name: 'vacinacao',
+      component: Vacinacao
     }
   ]
 })

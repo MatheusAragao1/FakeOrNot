@@ -41,7 +41,7 @@ import axios from 'axios'
           return
         }
         this.formResult = "Carregando..."
-        axios.get(`http://localhost:5000/automacao/${this.text}`)
+        axios.post(`http://localhost:5000/automacao/`, { text: this.text})
         .then(res => {
           this.formResult = res.data.result
         }).catch(e => {
@@ -50,10 +50,13 @@ import axios from 'axios'
       },
       onSubmit2(event){
         event.preventDefault()
-        if(this.text.split(' ').length < 100){
-          alert('necessario um minimo de 100 palavras')
-          return
-        }
+        this.formResult = "Carregando..."
+        axios.post(`http://localhost:5000/ai/`, { text: this.text})
+        .then(res => {
+          this.formResult = "A AI classificou o texto como: " + res.data.result
+        }).catch(e => {
+          this.formResult = e
+        })
       }
     }
   }
